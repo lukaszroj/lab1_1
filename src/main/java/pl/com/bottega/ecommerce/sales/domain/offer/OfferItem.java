@@ -166,7 +166,7 @@ public class OfferItem {
         } else if (!productId.equals(other.productId)) {
             return false;
         }
-        if (productType != other.productType) {
+        if (!productType.equals(other.productType)) {
             return false;
         }
         if (quantity != other.quantity) {
@@ -210,7 +210,7 @@ public class OfferItem {
         } else if (!productId.equals(other.productId)) {
             return false;
         }
-        if (productType != other.productType) {
+        if (!productType.equals(other.productType)) {
             return false;
         }
 
