@@ -23,17 +23,9 @@ public class OfferItem {
     // product
     
     public Product product;
-
+    public Money money;
+    
     private int quantity;
-
-    private BigDecimal totalCost;
-
-    private String currency;
-
-    // discount
-    private String discountCause;
-
-    private BigDecimal discount;
 
     public OfferItem(String productId, BigDecimal productPrice, String productName,
             Date productSnapshotDate, String productType, int quantity) {
@@ -50,33 +42,19 @@ public class OfferItem {
         product.productType = productType;
 
         this.quantity = quantity;
-        this.discount = discount;
-        this.discountCause = discountCause;
+        money.discount = discount;
+        money.discountCause = discountCause;
 
         BigDecimal discountValue = new BigDecimal(0);
-        if (discount != null) {
-            discountValue = discountValue.subtract(discount);
+        if (money.discount != null) {
+            discountValue = discountValue.subtract(money.discount);
         }
 
-        this.totalCost = productPrice
+        money.totalCost = productPrice
                 .multiply(new BigDecimal(quantity)).subtract(discountValue);
     }
 
-    public BigDecimal getTotalCost() {
-        return totalCost;
-    }
 
-    public String getTotalCostCurrency() {
-        return currency;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public String getDiscountCause() {
-        return discountCause;
-    }
 
     public int getQuantity() {
         return quantity;
@@ -87,7 +65,7 @@ public class OfferItem {
         final int prime = 31;
         int result = 1;
         result = prime * result
-                + ((discount == null) ? 0 : discount.hashCode());
+                + ((money.discount == null) ? 0 : money.discount.hashCode());
         result = prime * result + ((product.productName == null) ? 0 : product.productName.hashCode());
         result = prime * result + ((product.productPrice == null) ? 0 : product.productPrice.hashCode());
         result = prime * result
@@ -95,7 +73,7 @@ public class OfferItem {
         result = prime * result + ((product.productType == null) ? 0 : product.productType.hashCode());
         result = prime * result + quantity;
         result = prime * result
-                + ((totalCost == null) ? 0 : totalCost.hashCode());
+                + ((money.totalCost == null) ? 0 : money.totalCost.hashCode());
         return result;
     }
 
@@ -111,11 +89,11 @@ public class OfferItem {
             return false;
         }
         OfferItem other = (OfferItem) obj;
-        if (discount == null) {
-            if (other.discount != null) {
+        if (money.discount == null) {
+            if (other.money.discount != null) {
                 return false;
             }
-        } else if (!discount.equals(other.discount)) {
+        } else if (!money.discount.equals(other.money.discount)) {
             return false;
         }
         if (product.productName == null) {
@@ -145,11 +123,11 @@ public class OfferItem {
         if (quantity != other.quantity) {
             return false;
         }
-        if (totalCost == null) {
-            if (other.totalCost != null) {
+        if (money.totalCost == null) {
+            if (other.money.totalCost != null) {
                 return false;
             }
-        } else if (!totalCost.equals(other.totalCost)) {
+        } else if (!money.totalCost.equals(other.money.totalCost)) {
             return false;
         }
         return true;
@@ -192,12 +170,12 @@ public class OfferItem {
         }
 
         BigDecimal max, min;
-        if (totalCost.compareTo(other.totalCost) > 0) {
-            max = totalCost;
-            min = other.totalCost;
+        if (money.totalCost.compareTo(other.money.totalCost) > 0) {
+            max = money.totalCost;
+            min = other.money.totalCost;
         } else {
-            max = other.totalCost;
-            min = totalCost;
+            max = other.money.totalCost;
+            min = money.totalCost;
         }
 
         BigDecimal difference = max.subtract(min);

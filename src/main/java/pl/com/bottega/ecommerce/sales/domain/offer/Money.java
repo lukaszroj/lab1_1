@@ -5,10 +5,20 @@
  */
 package pl.com.bottega.ecommerce.sales.domain.offer;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author 180273
  */
 public class Money {
+    public BigDecimal totalCost;
+
+    public String currency;
+
+    // discount
+    public String discountCause;
+
+    public BigDecimal discount;
     
 }
