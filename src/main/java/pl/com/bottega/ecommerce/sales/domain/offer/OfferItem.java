@@ -22,17 +22,7 @@ public class OfferItem {
 
     // product
     
-    private Product product;
-    
-   /* private String productId;
-
-    private BigDecimal productPrice;
-
-    private String productName;
-
-    private Date productSnapshotDate;
-
-    private String productType;*/
+    public Product product;
 
     private int quantity;
 
@@ -72,26 +62,6 @@ public class OfferItem {
                 .multiply(new BigDecimal(quantity)).subtract(discountValue);
     }
 
-    public String getProductId() {
-        return product.productId;
-    }
-/*
-    public BigDecimal getProductPrice() {
-        return productPrice;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public Date getProductSnapshotDate() {
-        return productSnapshotDate;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-*/
     public BigDecimal getTotalCost() {
         return totalCost;
     }

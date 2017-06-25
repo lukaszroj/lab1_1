@@ -65,7 +65,7 @@ public class Offer {
         }
 
         for (OfferItem item : availabeItems) {
-            OfferItem sameItem = seenOffer.findItem(item.getProductId());
+            OfferItem sameItem = seenOffer.findItem(item.product.productId);
             if (sameItem == null) {
                 return false;
             }
@@ -79,7 +79,7 @@ public class Offer {
 
     private OfferItem findItem(String productId) {
         for (OfferItem item : availabeItems) {
-            if (item.getProductId().equals(productId)) {
+            if (item.product.productId.equals(productId)) {
                 return item;
             }
         }
